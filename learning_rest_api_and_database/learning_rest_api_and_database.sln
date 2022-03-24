@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "learning_rest_api_and_database", "learning_rest_api_and_database.csproj", "{226F20AC-77D4-4DE9-B2DE-776C3C39BC4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{226F20AC-77D4-4DE9-B2DE-776C3C39BC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226F20AC-77D4-4DE9-B2DE-776C3C39BC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226F20AC-77D4-4DE9-B2DE-776C3C39BC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226F20AC-77D4-4DE9-B2DE-776C3C39BC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02793613-0036-4F01-8AE7-63B1D801B9AF}
+	EndGlobalSection
+EndGlobal
