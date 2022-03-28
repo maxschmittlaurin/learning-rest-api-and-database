@@ -67,7 +67,32 @@ namespace learning_rest_api_and_database.Controllers
         [HttpPut("UpdateUser")]
         public IActionResult Update([FromBody] UserRequest request)
         {
-            return Ok();
+            try
+            {
+                var user = _dbContext.tblUsers.FirstOrDefault(x => x.Id == request.Id);
+            
+                if (user == null)
+                {
+                    return StatusCode(404, "No user found");
+                }
+
+                user.UserName = request.UserName;
+                user.FirstName = request.FirstName;
+                user.LastName = request.LastName;
+                user.City = request.City;
+                user.Country = request.Country;
+                user.State = request.State;
+
+                _dbContext.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error has occurred");
+            }
+
+            var users = _dbContext.tblUsers.ToList();
+            return Ok(users);
         }
 
         [HttpDelete("DeleteUser/{Id}")]
