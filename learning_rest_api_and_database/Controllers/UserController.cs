@@ -23,30 +23,20 @@ namespace learning_rest_api_and_database.Controllers
         [HttpGet("GetUsers")]
         public IActionResult Get()
         {
-            // Trouver un moyen d'obtenir le defaultstring
-
-
-            //try
-            //{
-            //    var users = _dbContext.tblUsers.ToList();
-
-            //    if (users.Count == 0)
-            //    {
-            //        return StatusCode(404, "No user found"); 
-            //    }
-            //    return Ok(users);
-            //}
-            //catch(Exception)
-            //{
-            //    return StatusCode(500, "An error has occurred");
-            //}
-            var users = _dbContext.tblUsers.ToList();
-
-            if (users.Count == 0)
+            try
             {
-                return StatusCode(404, "No user found");
+                var users = _dbContext.tblUsers.ToList();
+
+                if (users.Count == 0)
+                {
+                    return StatusCode(404, "No user found");
+                }
+                return Ok(users);
             }
-            return Ok(users);
+            catch (Exception)
+            {
+                return StatusCode(500, "An error has occurred");
+            }
         }
 
         [HttpPost("CreateUser")]
