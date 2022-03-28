@@ -96,9 +96,27 @@ namespace learning_rest_api_and_database.Controllers
         }
 
         [HttpDelete("DeleteUser/{Id}")]
-        public IActionResult Delete(int Id)
+        public IActionResult Delete([FromRoute] int Id)
         {
-            return Ok();
+            try
+            {
+                var user = _dbContext.tblUsers.FirstOrDefault(x => x.Id == Id);
+
+                if (user == null)
+                {
+                    return StatusCode(404, "No user found");
+                }
+
+                _dbContext.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+                _dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error has occurred");
+            }
+
+            var users = _dbContext.tblUsers.ToList();
+            return Ok(users);
         }
     }
 }
