@@ -42,7 +42,26 @@ namespace learning_rest_api_and_database.Controllers
         [HttpPost("CreateUser")]
         public IActionResult Create([FromBody] UserRequest request)
         {
-            return Ok();
+            tblUser user = new tblUser();
+            user.UserName = request.UserName;
+            user.FirstName = request.FirstName;
+            user.LastName = request.LastName;
+            user.City = request.City;
+            user.Country = request.Country;
+            user.State = request.State;
+
+            try
+            {
+                _dbContext.tblUsers.Add(user);
+                _dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "An error has occurred");
+            }
+
+            var users = _dbContext.tblUsers.ToList();
+            return Ok(users);
         }
 
         [HttpPut("UpdateUser")]
